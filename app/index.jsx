@@ -6,12 +6,12 @@ import moment from 'moment';
 class MessageItem extends React.Component {
   constructor() {
     super();
-    MessageItem.propTypes = { item: React.PropTypes.object };
+    MessageItem.propTypes = { msgItm: React.PropTypes.object };
   }
 
   render() {
     return (
-      <li onClick={this.props.editMessage}>{this.props.item.message}</li>
+      <li onClick={this.props.editMessage}>{this.props.msgItm.message}</li>
     )
   }
 }
@@ -26,16 +26,16 @@ class MessageList extends React.Component {
     }
   }
 
-  editMessage(event){
+  editMessage(msgItm){
     // this.setState({
     //   editingIndex: event.target.value
     // })    
-    console.log('editing item', item);      
+    console.log('editing item', msgItm);      
   }  
 
   render() {
-    let newMessages = this.state.messageItems.map((item, i) => {
-      return <MessageItem key={i} item={item} editMessage={this.editMessage.bind(this, item)} />
+    let newMessages = this.state.messageItems.map((msgItm, i) => {
+      return <MessageItem key={i} msgItm={msgItm} editMessage={this.editMessage.bind(this, msgItm)} />
     })
 
     return (
@@ -77,13 +77,12 @@ class MessageInput extends React.Component {
   }
 
   render() {
-
     return (
-        <div>
-          <input id="inputId" type="text" ref="message" value={this.state.value} onChange={this._handleChange.bind(this)} />
-          <button onClick={this._handleClick.bind(this)}>push me</button>
-          <div><MessageList /></div>
-        </div>
+      <div>
+        <input id="inputId" type="text" ref="message" value={this.state.value} onChange={this._handleChange.bind(this)} />
+        <button onClick={this._handleClick.bind(this)}>push me</button>
+        <div><MessageList /></div>
+      </div>
     );
   }
 }
