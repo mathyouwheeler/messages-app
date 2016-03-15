@@ -80,7 +80,7 @@ class MessageInput extends React.Component {
     return (
       <div>
         <input id="inputId" type="text" ref="message" value={this.state.value} onChange={this._handleChange.bind(this)} />
-        <button onClick={this._handleClick.bind(this)}>push me</button>
+        <button onClick={this._handleClick.bind(this)}>Add Message</button>
         <div><MessageList /></div>
       </div>
     );
